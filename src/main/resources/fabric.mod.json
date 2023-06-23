@@ -19,7 +19,7 @@
 			"me.ethanbrews.whitelistinvite.WhitelistInvite"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+
 		]
 	},
 	"mixins": [

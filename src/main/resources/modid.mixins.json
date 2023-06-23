@@ -1,9 +1,9 @@
 {
 	"required": true,
-	"package": "com.example.mixin",
+	"package": "me.ethanbrews.whitelistinvite.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-      "me.ethanbrews.whitelistinvite.mixin.ExampleMixin"
+
 	],
 	"injectors": {
 		"defaultRequire": 1
