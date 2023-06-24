@@ -33,12 +33,13 @@ public class WhitelistInvite implements ModInitializer {
 
     @Override
     public void onInitialize() {
+
         // This code runs as soon as Minecraft is in a mod-load-ready state.
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(
                 literal("invite")
-                        .then(argument("player", GameProfileArgumentType.gameProfile()))
+                        .then(argument("player", GameProfileArgumentType.gameProfile())
                         .executes(context -> {
                             if(context.getSource().isExecutedByPlayer())
                             {
@@ -64,12 +65,12 @@ public class WhitelistInvite implements ModInitializer {
                                 return 1;
                             }
                             return 0;
-                        })
+                        }))
 
                 ));
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(
                 literal("revoke")
-                        .then(argument("player", GameProfileArgumentType.gameProfile()))
+                        .then(argument("player", GameProfileArgumentType.gameProfile())
                         .executes(context -> {
                             if(context.getSource().isExecutedByPlayer())
                             {
@@ -94,7 +95,7 @@ public class WhitelistInvite implements ModInitializer {
                                 return 1;
                             }
                             return 0;
-                        })
+                        }))
 
         ));
         LOGGER.info("Hello Fabric world!");

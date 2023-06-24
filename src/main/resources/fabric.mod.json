@@ -1,11 +1,11 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "whitelistinvite",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Whitelist Invite",
+	"description": "Gives players a balanced system to whitelist without needing to be an operator",
 	"authors": [
-		"Me!"
+		"Acrogenous","inky2013"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -23,11 +23,7 @@
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
-		{
-			"config": "modid.client.mixins.json",
-			"environment": "client"
-		}
+		"modid.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",
