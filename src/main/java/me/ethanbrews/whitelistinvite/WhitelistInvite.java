@@ -56,14 +56,16 @@ public class WhitelistInvite implements ModInitializer {
                                         context.getSource().getServer().getPlayerManager().getWhitelist().add(new WhitelistEntry(gp));
                                         NbtCompound gpdata = new NbtCompound();
                                         gpdata.putString("inviter",context.getSource().getPlayer().getUuidAsString());
-                                        gpdata.putString("time", Time.from(Instant.now()).toString());
+                                        gpdata.putString("time", Instant.now().toString());
                                         nbt.put(gp.getId().toString(),gpdata);
+                                        context.getSource().sendMessage(Text.of("Added "+gp.getName()+" to whitelist, you can /revoke them for 10 days!"));
 
 
                                 }
                                 context.getSource().getServer().getDataCommandStorage().set(INVITE_DATA,nbt);
                                 return 1;
                             }
+                            context.getSource().sendMessage(Text.of("This command must be executed by a player, otherwise use normal /whitelist commands"));
                             return 0;
                         }))
 
@@ -86,14 +88,24 @@ public class WhitelistInvite implements ModInitializer {
                                         {
                                             if(Time.from(Instant.parse(gpdata.getString("time"))).before(Date.from(Instant.now().plus(10, ChronoUnit.DAYS))))
                                             {
-
+                                                context.getSource().sendMessage(Text.of(gp.getName()+" has been revoked from the whitelist!"));
+                                                context.getSource().getServer().getPlayerManager().getWhitelist().remove(gp);
                                             }
-                                            context.getSource().getServer().getPlayerManager().getWhitelist().remove(gp);
+                                            else
+                                            {
+                                                context.getSource().sendMessage(Text.of("You cannot revoke a player you invited after 10 days!"));
+                                            }
+
                                         }
+                                    }
+                                    else
+                                    {
+                                        context.getSource().sendMessage(Text.of("You didn't invite that player!"));
                                     }
                                 }
                                 return 1;
                             }
+                            context.getSource().sendMessage(Text.of("This command must be executed by a player, otherwise use normal /whitelist commands"));
                             return 0;
                         }))
 
